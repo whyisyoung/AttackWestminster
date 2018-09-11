@@ -34,7 +34,7 @@ def fetch_sentences(filename):
             # json_acceptable_str = line[:-1].replace("'",  "\"")
             # line_dict = json.loads(json_acceptable_str)
             line_dict = ast.literal_eval(line[:-1])
-            sentences_str += line_dict["Sentences"]
+            sentences_str += ' ' + line_dict["Sentences"]
 
     return sentences_str
 
@@ -50,7 +50,9 @@ def main():
     sentences_str = fetch_sentences(INPUT_FILE)
     # need to convert all word to lowercase, 
     # or it would treat Apple and apple as two different tokens
-    word_tokens = word_tokenize(sentences_str.lower())  
+    # replace the "." with " " so that "2012" and "2012." would be treated as the same token.
+    cleaned_sentences = sentences_str.lower().replace('.', ' ')
+    word_tokens = word_tokenize(cleaned_sentences)
     stop_words = set(stopwords.words('english') + list(string.punctuation) + custom_stopwords) 
     filtered_sentence = ' '.join([w for w in word_tokens if w not in stop_words])
 
