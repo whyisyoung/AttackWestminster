@@ -16,13 +16,6 @@ INPUT_FILE = 'input/sentences.json'
 # TODO: need to add more stopwords to filter unimportant words.
 custom_stopwords = ["'s", "said", "could", "also", "news", "--", "..."]
 
-# TODO: these common words were partially selected from frequent words.
-#       we can do better by looking at data retrieved in this unit.
-# common_words = ['hurricane', 'storm', 'winds', 'power', 'people', 'coast',
-#                 'tropical', 'flooding', 'center', 'water', 'island', 'weather',
-#                 'surge', 'climate', 'atlantic', 'service', 'damage', 'expected',
-#                 'high', 'sea', 'landfall', 'coastal', 'residents']
-
 def fetch_sentences(filename):
     """
     Fetch sentences from cleaned json file.
@@ -57,7 +50,6 @@ def get_percent_usage(words, event_tokens, baseline_tokens, key='diff'):
 def get_lemma_set(words):
     wordnet_synsets = [(word, set(s for s in wn.synsets(word))) for word in words]
     return [(x[0], set(lemma.lower() for synset in x[1] for lemma in synset.lemma_names())) for x in wordnet_synsets]
-    # return set(lemma.lower() for synset in wordnet_synsets for lemma in synset.lemma_names())
 
 def get_lemma_percent_usage(lemma_map, event_tokens, baseline_tokens, key='diff'):
     lemma_usage = []
@@ -96,10 +88,11 @@ def main():
     ### Used to find the most common words in our dataset that help identify our dataset.
     print("Start: Word Frequency Usage Calculation")
     start = timeit.default_timer()
-    word_usage = get_percent_usage(freq_words, filtered_words, baseline_lower)
+    word_usage = get_percent_usage(freq_words, filtered_words, baseline_lower, key="event")
     with open('result/unit2_word_freq.csv', 'w') as f:
+        f.write("word, event, baseline, diff\n")
         for word in word_usage:
-            f.write('%s,%.4f\n' % (word['word'], word['event']))
+            f.write('%s,%.4f,%.4f,%.4f\n' % (word['word'], word['event'], word['baseline'], word['diff']))
     end = timeit.default_timer()
     print("End: Word Frequency Usage Calculation (took: %0.2fs)" % (end - start))
 
@@ -107,10 +100,11 @@ def main():
     print("Start: Lemma Frequency Usage Calculation")
     start = timeit.default_timer()
     lemmas = get_lemma_set(freq_words)
-    lemma_usage = get_lemma_percent_usage(lemmas, filtered_words, baseline_lower)
+    lemma_usage = get_lemma_percent_usage(lemmas, filtered_words, baseline_lower, key="event")
     with open('result/unit2_lemma_freq.csv', 'w') as f:
+        f.write("word, event, baseline, diff\n")
         for lemma in lemma_usage:
-            f.write('%s,%.4f\n' % (lemma['word'], lemma['event']))
+            f.write('%s,%.4f,%.4f,%.4f\n' % (lemma['word'], lemma['event'], lemma['baseline'], lemma['diff']))
     end = timeit.default_timer()
     print("End: Lemma Frequency Usage Calculation (took: %0.2fs)" % (end - start))
 
