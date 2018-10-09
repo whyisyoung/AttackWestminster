@@ -14,7 +14,7 @@ from nltk.corpus import state_union
 INPUT_FILE = 'input/cleaned_text_westminster.txt'
 
 # TODO: need to add more stopwords to filter unimportant words.
-custom_stopwords = ["'s", "said", "could", "also", "news", "--", "..."]
+custom_stopwords = ["'s", "said", "could", "also", "news", "--", "...", "``", "''"]
 
 def fetch_sentences(filename):
     """
