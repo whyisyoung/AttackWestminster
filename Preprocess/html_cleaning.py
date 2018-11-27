@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 # @Author: whyisyoung
 # @Date:   2018-09-19 23:47:34
-# @Last Modified time: 2018-09-20 01:17:42
+# @Last Modified time: 2018-10-24 11:08:27
 
 import justext
 from timeit import default_timer as timer
 import ast
 
 RAW_TEXT_JSON_FILE = 'raw_html_text.json'
-OUTPUT_FILE = 'cleaned_text.txt'
+OUTPUT_FILE = 'cleaned_text_hurricane_sandy_small.txt'
 
 
 def HtmlClean(rawtext):
@@ -16,7 +16,6 @@ def HtmlClean(rawtext):
     #Checks each paragraph for whether it's meaningful text or not
     #Outputs the text as a string with html tags and nav elements removed
     paragraphs = justext.justext(rawtext,justext.get_stoplist("English"))
-    # TODO: can tune the class of paragraph (good, bad, etc) to see if it can be improved
     return ' '.join([p.text for p in paragraphs if not p.is_boilerplate])
 
 
@@ -38,7 +37,7 @@ if __name__ == '__main__':
     #        """
     # with open('tmp', 'w') as f:
     #     f.write(HtmlClean(text).encode("utf-8"))
-    
+
     start = timer()
     get_text_from_json(RAW_TEXT_JSON_FILE, OUTPUT_FILE)
     end = timer()

@@ -1,6 +1,18 @@
 .python-version
+.vscode
 sentences.json
 data/
+unit_7_westminster/westminster_data/
+unit_7_westminster/Unit7_smalldata_gensim.py
+unit_7_westminster/Unit7_smalldata_multi.py
+unit_7_westminster/Unit7_smalldata_noqueue.py
+unit_7_westminster/Unit7_smalldata.py
+unit_7_westminster/tmp*
+unit_7_westminster/single
+unit_7_westminster/mid-summary.txt
+unit_7_westminster/generate_sentences.py
+unit_7_westminster/result_no_param_small/
+unit_7_westminster/result_ratio_0.1_small/
 
 # FOR macOS
 
