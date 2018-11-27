@@ -15,7 +15,10 @@ import gensim
 from gensim import corpora, models
 import numpy as np
 
-input_file_path = "Preprocess/small-cleaned.json"
+input_file_path = "Preprocess/Attack_Westminster_big_cleaned.json"
+# input_file_path = "Preprocess/small-cleaned.json"
+
+output_path = "unit_6/big"
 
 def get_most_frequent_words():
     docfreq = pickle.load(open(picklefile, 'r'))
@@ -49,12 +52,19 @@ def test():
 def evaluate(row):
     # clean data
     record, stop_words = row
-    text = nltk.word_tokenize(record['sentences_t'].lower())
+    # text = nltk.word_tokenize(record['sentences_t'].lower())
+    text = nltk.word_tokenize(record['text'].lower())
     p_stemmer = PorterStemmer()
     stemmed_stopwords = [p_stemmer.stem(i) for i in stop_words]
     stemmed_text = [p_stemmer.stem(i) for i in text]
     stopped_tokens = [i for i in stemmed_text if (i not in stemmed_stopwords and len(i) > 2)]
     return stopped_tokens
+
+def appendArticles(listOfAricles, output_file, documents):
+    with open(output_path + output_file + ".txt", 'w') as f:
+        for article in listOfAricles:
+            f.write(documents[article][0]['text'])
+            # f.write(documents[article][0]['sentences_t'])
 
 
 def main():
@@ -100,40 +110,29 @@ def main():
     #topics = lda_model.show_topics(num_topics=15, num_words=5)
     #topcis2 = ldamodel.get_topics()
 
-    # for i, topic in enumerate(topics):
-    #     print topic
+    for i, topic in enumerate(topics):
+        print topic
 
+    listOfDocsPerTopic = []
+    for i, topic in enumerate(topics):
+        articles = []
+        tops = sorted(zip(range(len(lsi_corpus)), lsi_corpus), reverse=True, key=lambda doc: abs(dict(doc[1]).get(i, 0.0)))
 
-    for i in range(len(documents)):
-        max = 0.0
-        maxTopic = -1
-        for j, topic in enumerate(topics):
-            curr = abs(lsi_corpus(i).get(j, 0.0))
-            if (curr > max):
-                max = curr
-                maxTopic = j
-        print "Most relevant topic for doc ", i, " is ", j
+        curr = tops[0][1][i][1]
+        j = 0
+        while (abs(curr) > 0.3 and j < len(tops)):
+            top = tops[j]
+            j += 1
+            curr = top[1][i][1]
+            articles.append(top[0])
+        listOfDocsPerTopic.append(articles)
 
-    # for i, topic in enumerate(topics):
-    #    print topic
-    #    tops = sorted(zip(range(len(lsi_corpus)), lsi_corpus), reverse=True, key=lambda doc: abs(dict(doc[1]).get(i, 0.0)))
-    #    #if (i == 1): #when i=1 the topic is the "page not found" topic
-    #    print tops[0][1][i], tops[0][1][i-1], tops[0][1][i+1]
-    #        # for top in tops[:20]:
-    #        #     print documents[top[0]][0]['sentences_t']
-    #
-    #    # print 'Most relevant documents nums: '
-    #    # for top in tops[:5]:
-    #    #     print top[0]
+    appendArticles(listOfDocsPerTopic[0], "topic-big-0", documents)
+    appendArticles(listOfDocsPerTopic[2], "topic-big-2", documents)
+    appendArticles(listOfDocsPerTopic[7], "topic-big-9", documents)
 
     end = time.time()
     print "End Time: ", end-st
-
-    #final_results = compile_results(individual_results)
-    #print "Final Results", final_results
-    #print "Final Results ayy lmao: "
-    #for res in final_results:
-    #   print res, ":", final_results[res]
 
 if __name__ == '__main__':
     main()
