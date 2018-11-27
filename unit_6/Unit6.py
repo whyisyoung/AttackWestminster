@@ -103,12 +103,28 @@ def main():
     # for i, topic in enumerate(topics):
     #     print topic
 
-    for i, topic in enumerate(topics):
-       print topic
-       tops = sorted(zip(range(len(lsi_corpus)), lsi_corpus), reverse=True, key=lambda doc: abs(dict(doc[1]).get(i, 0.0)))
-       # print 'Most relevant documents nums: '
-       # for top in tops[:5]:
-       #     print top[0]
+
+    for i in range(len(documents)):
+        max = 0.0
+        maxTopic = -1
+        for j, topic in enumerate(topics):
+            curr = abs(lsi_corpus(i).get(j, 0.0))
+            if (curr > max):
+                max = curr
+                maxTopic = j
+        print "Most relevant topic for doc ", i, " is ", j
+
+    # for i, topic in enumerate(topics):
+    #    print topic
+    #    tops = sorted(zip(range(len(lsi_corpus)), lsi_corpus), reverse=True, key=lambda doc: abs(dict(doc[1]).get(i, 0.0)))
+    #    #if (i == 1): #when i=1 the topic is the "page not found" topic
+    #    print tops[0][1][i], tops[0][1][i-1], tops[0][1][i+1]
+    #        # for top in tops[:20]:
+    #        #     print documents[top[0]][0]['sentences_t']
+    #
+    #    # print 'Most relevant documents nums: '
+    #    # for top in tops[:5]:
+    #    #     print top[0]
 
     end = time.time()
     print "End Time: ", end-st
