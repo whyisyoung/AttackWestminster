@@ -1,6 +1,6 @@
 # 2017 Westminster Attack - Big Data Text summarization
 
-Source code for getting a summary from multiple web archive about the 2017
+Source code for getting a summary from multiple web archive about ~~Hurricane Sandy~~ the 2017
 Westminster Attack in London.
 
 # Generated Summaries
