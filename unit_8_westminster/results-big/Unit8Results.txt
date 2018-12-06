@@ -1,0 +1,7 @@
+Injured: [(u'dozens', 257)]
+TypeOfAttack: [(u'terrorist attack', 2735), (u'terrorist incident', 908), (u'bombing', 537), (u'bombings', 509), (u'terrorist attacks', 481), (u'shooting', 360), (u'terrorist incidents', 168), (u'Terrorist attacks', 111), (u'shootings', 46), (u'Terrorist Attack', 34)]
+Attacker: [(u'Khalid Masood', 1323), (u"Khalid Masood's", 451), (u'Attacker Khalid Masood', 40), (u'Terrorist Khalid Masood', 22), (u'Westminster Attack', 19), (u'Khalid Masood\u2019s', 18), (u'Masood', 14), (u'Mrs May', 14), (u'Charlie Hebdo', 12), (u'Khalid Masood - aka Adrian Elms', 12)]
+Near: [(u'Westminster Bridge', 5578), (u'Parliament Square', 482), (u'Trafalgar Square', 352), (u'Westminster Abbey', 287), (u'Hagley Road', 276), (u'London Bridge', 268), (u'Downing Street', 213), (u'Westminster Hall', 170), (u'Portcullis House', 154), (u'Parliament Street', 138)]
+Location: [(u'London', 7079), (u'Westminster', 6334), (u'Birmingham', 3396), (u'Britain', 1120), (u'Manchester', 619), (u'Brighton', 517), (u'Kent', 432), (u'Syria', 393), (u'Brussels', 366), (u'Paris', 282)]
+Date: [(u'Mar. 22, 2017', 1890), (u'Mar. 23, 2017', 632), (u'some years ago', 506), (u'Mar. 26, 2017', 315), (u'30-year-old', 276), (u'Mar. 24, 2017', 227), (u'Mar. 25, 2017', 212), (u'Mar. 27, 2017', 210), (u'March 22, 2017', 177), (u'5-year-old', 153)]
+Killed: [(u'dozens', 9)]

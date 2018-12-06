@@ -1,0 +1,7 @@
+Attacker: [('Khalid Masood', 50), ("Khalid Masood's", 17), ('captionLondon', 2), ('Westminster Attack', 2), ('Khalid Masood - aka Adrian Elms', 2), ('Terrorist Khalid Masood', 2), ('Khalid MasoodCredit', 2), ('Adrian Ajao', 2), ("Mr Ali's", 2), ('Isis', 2)]
+TypeOfAttack: [('terrorist attack', 119), ('terrorist incident', 50), ('terrorist attacks', 21), ('bombing', 19), ('bombings', 17), ('shooting', 12), ('terrorist incidents', 6), ('Terrorist attacks', 5), ('shootings', 3), ('terrorist attacked', 2)]
+Location: [('London', 358), ('Westminster', 271), ('Birmingham', 140), ('Britain', 70), ('Manchester', 55), ('Syria', 35), ('Brighton', 25), ('Iraq', 24), ('Kent', 21), ('Eastbourne', 13)]
+Killed: [('4', 81), ('3', 46), ('5', 45), ('1', 44), ('2', 14), ('22', 11), ('32', 6), ('6', 3), ('12', 3), ('8', 3)]
+Date: [('Mar. 22, 2017', 72), ('some years ago', 24), ('Mar. 23, 2017', 24), ('2017', 18), ('Friday March 24', 15), ('Mar. 26, 2017', 12), ('30-year-old', 11), ('5-year-old', 10), ('2015 - February', 10), ('March 22, 2017', 9)]
+Near: [('Westminster Bridge', 242), ('Parliament Square', 31), ('London Bridge', 20), ('Trafalgar Square', 14), ('Downing Street', 10), ('Hagley Road', 9), ('Westminster Abbey', 9), ('City Hall', 8), ('Portcullis House', 6), ('Westminster Hall', 6)]
+Injured: [('50', 34), ('3', 24), ('dozens', 20), ('40', 19), ('4', 17), ('20', 11), ('30', 10), ('31', 10), ('2', 9), ('8', 6)]
