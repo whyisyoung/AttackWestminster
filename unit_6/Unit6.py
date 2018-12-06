@@ -1,3 +1,16 @@
+# This script uses the Gensim python library to extract topics from the input input file
+# In order to run this script, type "python Unit6.py", it took appriximately 30 seconds to
+# run on the small dataset and about 5 minutes to run on the large dataset. Note you need
+# to manually change some of the hardcoded values in order to run correctly on your input
+# json. Specifically:
+# input_file_path must be set to the file path of the JSON
+# The methods "evaluate" and "appendArticles" need to be changed to have
+#    the name of the json column corresponding to the text of the document
+
+#Overall the script will output the top 15 topics discovered and will produce 15 files
+# the files produced are text files containing the concatenation  text of all documents that "strongly"
+# associate with a given topic.
+
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
